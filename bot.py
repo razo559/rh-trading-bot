@@ -44,7 +44,7 @@ class bot:
         },
         'trade_strategies': {
             'buy': 'buy_sma_crossover_rsi',
-            'sell': 'above_buy'
+            'sell': 'sell_sma_crossover_rsi'
         },
         'buy_below_moving_average': 0.0075,
         'profit_percentage': 0.01,
