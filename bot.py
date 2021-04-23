@@ -43,7 +43,7 @@ class bot:
             'XETHZUSD': 'ETH'
         },
         'trade_strategies': {
-            'buy': 'sma_rsi_threshold',
+            'buy': 'buy_sma_crossover_rsi',
             'sell': 'above_buy'
         },
         'buy_below_moving_average': 0.0075,
