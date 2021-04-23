@@ -7,8 +7,8 @@ config = {
         'XETHZUSD': 'ETH'
     }, 
     'trade_strategies': { # select which strategies would you like the bot to use (buy, sell); see documentation for more info
-        'buy': 'sma_rsi_threshold',
-        'sell': 'above_buy'
+        'buy': 'buy_sma_crossover_rsi',
+        'sell': 'sell_sma_crossover_rsi'
     },
     'buy_below_moving_average': 0.0075, # buy if price drops below Fast_MA by this percentage (0.75%)
     'profit_percentage': 0.01, # sell if price raises above purchase price by this percentage (1%)
