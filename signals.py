@@ -23,11 +23,11 @@ class signals:
             # Fast-SMA crossed Slow-SMA and stays above
             data.iloc[ -1 ][ ticker + '_SMA_F' ] >= data.iloc[ -1 ][ ticker + '_SMA_S' ]  and
             data.iloc[ -2 ][ ticker + '_SMA_F' ] >= data.iloc[ -2 ][ ticker + '_SMA_S' ]  and
-            data.iloc[ -3 ][ ticker + '_SMA_F' ] >= data.iloc[ -3 ][ ticker + '_SMA_S' ]  and
+            #data.iloc[ -3 ][ ticker + '_SMA_F' ] >= data.iloc[ -3 ][ ticker + '_SMA_S' ]  and
             #data.iloc[ -4 ][ ticker + '_SMA_F' ] < data.iloc[ -4 ][ ticker + '_SMA_S' ]  and
             
             # ... and they diverge
-            data.iloc[ -1 ][ ticker + '_SMA_F' ] - data.iloc[ -1 ][ ticker + '_SMA_S' ] >= data.iloc[ -2 ][ ticker + '_SMA_F' ] - data.iloc[ -2 ][ ticker + '_SMA_S' ]
+            data.iloc[ -1 ][ ticker + '_SMA_F' ] - data.iloc[ -1 ][ ticker + '_SMA_S' ] >= data.iloc[ -2 ][ ticker + '_SMA_F' ] - data.iloc[ -2 ][ ticker + '_SMA_S' ][ 'buy' ]
             
             # RSI above threshold
             #data.iloc[ -1 ][ ticker + '_RSI' ] > config[ 'rsi_threshold' ][ 'buy' ]
@@ -63,13 +63,13 @@ class signals:
             # Make sure the data is valid
             not isnan( data.iloc[ -1 ][ asset.ticker + '_SMA_F' ] ) and
             not isnan( data.iloc[ -2 ][ asset.ticker + '_SMA_F' ] ) and
-            not isnan( data.iloc[ -3 ][ asset.ticker + '_SMA_F' ] ) and
-            not isnan( data.iloc[ -4 ][ asset.ticker + '_SMA_F' ] ) and
+            #not isnan( data.iloc[ -3 ][ asset.ticker + '_SMA_F' ] ) and
+            #not isnan( data.iloc[ -4 ][ asset.ticker + '_SMA_F' ] ) and
             not isnan( data.iloc[ -1 ][ asset.ticker + '_SMA_S' ] ) and
             not isnan( data.iloc[ -2 ][ asset.ticker + '_SMA_S' ] ) and
-            not isnan( data.iloc[ -3 ][ asset.ticker + '_SMA_S' ] ) and
-            not isnan( data.iloc[ -4 ][ asset.ticker + '_SMA_S' ] ) and
-            not isnan( data.iloc[ -1 ][ asset.ticker + '_RSI' ] ) and
+            #not isnan( data.iloc[ -3 ][ asset.ticker + '_SMA_S' ] ) and
+            #not isnan( data.iloc[ -4 ][ asset.ticker + '_SMA_S' ] ) and
+            #not isnan( data.iloc[ -1 ][ asset.ticker + '_RSI' ] ) and
 
             # Fast-SMA crossed Slow-SMA and stays above
             data.iloc[ -1 ][ asset.ticker + '_SMA_F' ] <= data.iloc[ -1 ][ asset.ticker + '_SMA_S' ]  and
@@ -78,10 +78,10 @@ class signals:
             data.iloc[ -4 ][ asset.ticker + '_SMA_F' ] > data.iloc[ -4 ][ asset.ticker + '_SMA_S' ]  and
             
             # ... and they diverge
-            data.iloc[ -1 ][ ticker + '_SMA_S' ] - data.iloc[ -1 ][ ticker + '_SMA_F' ] >= data.iloc[ -2 ][ ticker + '_SMA_S' ] - data.iloc[ -2 ][ ticker + '_SMA_F' ] and
+            data.iloc[ -1 ][ ticker + '_SMA_S' ] - data.iloc[ -1 ][ ticker + '_SMA_F' ] >= data.iloc[ -2 ][ ticker + '_SMA_S' ] - data.iloc[ -2 ][ ticker + '_SMA_F' ][ 'sell' ] and
             
             # RSI below threshold
-            data.iloc[ -1 ][ ticker + '_RSI' ] <= config[ 'rsi_threshold' ][ 'sell' ] and
+            #data.iloc[ -1 ][ ticker + '_RSI' ] <= config[ 'rsi_threshold' ][ 'sell' ] and
 
             # Price is greater than purchase price by at least profit percentage
             data.iloc[ -1 ][ asset.ticker ] >= asset.price + (  asset.price * config[ 'profit_percentage' ] )
